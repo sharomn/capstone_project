@@ -23,9 +23,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(ps2k_j!^=jg!9afv*%qu2r&k3q6q(a&fgrxa99&1yk-_wm(w5'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 
 # Application definition
@@ -83,11 +83,16 @@ WSGI_APPLICATION = 'social_api.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+#DATABASES = {
+ #   'default': {postgresql://sharon:nGTDLvLxRfMx26h2U0n3nN7wpFmSqDVQ@dpg-d3paekripnbc739peb40-a/social_api_3te7
+  #      'ENGINE': 'django.db.backends.sqlite3',
+   #     'NAME': BASE_DIR / 'db.sqlite3',
+  #  }
+#}
+import dj_database_url
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default': dj_database_url.config(default='postgresql://sharon:nGTDLvLxRfMx26h2U0n3nN7wpFmSqDVQ@dpg-d3paekripnbc739peb40-a/social_api_3te7')
 }
 
 
