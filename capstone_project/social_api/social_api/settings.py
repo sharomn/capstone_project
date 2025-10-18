@@ -12,6 +12,17 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 
+
+import os
+import dj_database_url
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+
+DATABASES = {
+    'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
+}
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -89,7 +100,14 @@ WSGI_APPLICATION = 'social_api.wsgi.application'
    #     'NAME': BASE_DIR / 'db.sqlite3',
   #  }
 #}
+
+import os
 import dj_database_url
+
+SECRET_KEY = os.environ.get('SECRET_KEY')
+DEBUG = os.environ.get('DEBUG', 'False') == 'True'
+
+
 
 DATABASES = {
     'default': dj_database_url.config(default='postgresql://sharon:nGTDLvLxRfMx26h2U0n3nN7wpFmSqDVQ@dpg-d3paekripnbc739peb40-a/social_api_3te7')
